@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VendorsRouteImport } from './routes/vendors'
 import { Route as RfqRouteImport } from './routes/rfq'
 import { Route as QuotationsRouteImport } from './routes/quotations'
+import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ComparisonRouteImport } from './routes/comparison'
@@ -31,6 +32,11 @@ const RfqRoute = RfqRouteImport.update({
 const QuotationsRoute = QuotationsRouteImport.update({
   id: '/quotations',
   path: '/quotations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PurchaseOrdersRoute = PurchaseOrdersRouteImport.update({
+  id: '/purchase-orders',
+  path: '/purchase-orders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
   '/quotations': typeof QuotationsRoute
   '/rfq': typeof RfqRoute
   '/vendors': typeof VendorsRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
   '/quotations': typeof QuotationsRoute
   '/rfq': typeof RfqRoute
   '/vendors': typeof VendorsRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
   '/quotations': typeof QuotationsRoute
   '/rfq': typeof RfqRoute
   '/vendors': typeof VendorsRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/comparison'
     | '/dashboard'
     | '/login'
+    | '/purchase-orders'
     | '/quotations'
     | '/rfq'
     | '/vendors'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/comparison'
     | '/dashboard'
     | '/login'
+    | '/purchase-orders'
     | '/quotations'
     | '/rfq'
     | '/vendors'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/comparison'
     | '/dashboard'
     | '/login'
+    | '/purchase-orders'
     | '/quotations'
     | '/rfq'
     | '/vendors'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   ComparisonRoute: typeof ComparisonRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
+  PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QuotationsRoute: typeof QuotationsRoute
   RfqRoute: typeof RfqRoute
   VendorsRoute: typeof VendorsRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/quotations'
       fullPath: '/quotations'
       preLoaderRoute: typeof QuotationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/purchase-orders': {
+      id: '/purchase-orders'
+      path: '/purchase-orders'
+      fullPath: '/purchase-orders'
+      preLoaderRoute: typeof PurchaseOrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComparisonRoute: ComparisonRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
+  PurchaseOrdersRoute: PurchaseOrdersRoute,
   QuotationsRoute: QuotationsRoute,
   RfqRoute: RfqRoute,
   VendorsRoute: VendorsRoute,

@@ -18,6 +18,7 @@ import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ComparisonRouteImport } from './routes/comparison'
 import { Route as ApprovalsRouteImport } from './routes/approvals'
+import { Route as ActivityRouteImport } from './routes/activity'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VendorsRoute = VendorsRouteImport.update({
@@ -65,6 +66,11 @@ const ApprovalsRoute = ApprovalsRouteImport.update({
   path: '/approvals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivityRoute = ActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,6 +79,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
   '/approvals': typeof ApprovalsRoute
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
   '/approvals': typeof ApprovalsRoute
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
   '/approvals': typeof ApprovalsRoute
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/activity'
     | '/approvals'
     | '/comparison'
     | '/dashboard'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/activity'
     | '/approvals'
     | '/comparison'
     | '/dashboard'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/activity'
     | '/approvals'
     | '/comparison'
     | '/dashboard'
@@ -149,6 +161,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityRoute: typeof ActivityRoute
   ApprovalsRoute: typeof ApprovalsRoute
   ComparisonRoute: typeof ComparisonRoute
   DashboardRoute: typeof DashboardRoute
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApprovalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activity': {
+      id: '/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof ActivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -237,6 +257,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityRoute: ActivityRoute,
   ApprovalsRoute: ApprovalsRoute,
   ComparisonRoute: ComparisonRoute,
   DashboardRoute: DashboardRoute,

@@ -9,8 +9,80 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VendorsRouteImport } from './routes/vendors'
+import { Route as SetupRouteImport } from './routes/setup'
+import { Route as RfqRouteImport } from './routes/rfq'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as QuotationsRouteImport } from './routes/quotations'
+import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as InvoicesRouteImport } from './routes/invoices'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ComparisonRouteImport } from './routes/comparison'
+import { Route as ApprovalsRouteImport } from './routes/approvals'
+import { Route as ActivityRouteImport } from './routes/activity'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VendorsRoute = VendorsRouteImport.update({
+  id: '/vendors',
+  path: '/vendors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SetupRoute = SetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RfqRoute = RfqRouteImport.update({
+  id: '/rfq',
+  path: '/rfq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuotationsRoute = QuotationsRouteImport.update({
+  id: '/quotations',
+  path: '/quotations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PurchaseOrdersRoute = PurchaseOrdersRouteImport.update({
+  id: '/purchase-orders',
+  path: '/purchase-orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoicesRoute = InvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComparisonRoute = ComparisonRouteImport.update({
+  id: '/comparison',
+  path: '/comparison',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApprovalsRoute = ApprovalsRouteImport.update({
+  id: '/approvals',
+  path: '/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActivityRoute = ActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +91,200 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/approvals': typeof ApprovalsRoute
+  '/comparison': typeof ComparisonRoute
+  '/dashboard': typeof DashboardRoute
+  '/invoices': typeof InvoicesRoute
+  '/login': typeof LoginRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
+  '/quotations': typeof QuotationsRoute
+  '/reports': typeof ReportsRoute
+  '/rfq': typeof RfqRoute
+  '/setup': typeof SetupRoute
+  '/vendors': typeof VendorsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/approvals': typeof ApprovalsRoute
+  '/comparison': typeof ComparisonRoute
+  '/dashboard': typeof DashboardRoute
+  '/invoices': typeof InvoicesRoute
+  '/login': typeof LoginRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
+  '/quotations': typeof QuotationsRoute
+  '/reports': typeof ReportsRoute
+  '/rfq': typeof RfqRoute
+  '/setup': typeof SetupRoute
+  '/vendors': typeof VendorsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/approvals': typeof ApprovalsRoute
+  '/comparison': typeof ComparisonRoute
+  '/dashboard': typeof DashboardRoute
+  '/invoices': typeof InvoicesRoute
+  '/login': typeof LoginRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
+  '/quotations': typeof QuotationsRoute
+  '/reports': typeof ReportsRoute
+  '/rfq': typeof RfqRoute
+  '/setup': typeof SetupRoute
+  '/vendors': typeof VendorsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/activity'
+    | '/approvals'
+    | '/comparison'
+    | '/dashboard'
+    | '/invoices'
+    | '/login'
+    | '/purchase-orders'
+    | '/quotations'
+    | '/reports'
+    | '/rfq'
+    | '/setup'
+    | '/vendors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/activity'
+    | '/approvals'
+    | '/comparison'
+    | '/dashboard'
+    | '/invoices'
+    | '/login'
+    | '/purchase-orders'
+    | '/quotations'
+    | '/reports'
+    | '/rfq'
+    | '/setup'
+    | '/vendors'
+  id:
+    | '__root__'
+    | '/'
+    | '/activity'
+    | '/approvals'
+    | '/comparison'
+    | '/dashboard'
+    | '/invoices'
+    | '/login'
+    | '/purchase-orders'
+    | '/quotations'
+    | '/reports'
+    | '/rfq'
+    | '/setup'
+    | '/vendors'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityRoute: typeof ActivityRoute
+  ApprovalsRoute: typeof ApprovalsRoute
+  ComparisonRoute: typeof ComparisonRoute
+  DashboardRoute: typeof DashboardRoute
+  InvoicesRoute: typeof InvoicesRoute
+  LoginRoute: typeof LoginRoute
+  PurchaseOrdersRoute: typeof PurchaseOrdersRoute
+  QuotationsRoute: typeof QuotationsRoute
+  ReportsRoute: typeof ReportsRoute
+  RfqRoute: typeof RfqRoute
+  SetupRoute: typeof SetupRoute
+  VendorsRoute: typeof VendorsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vendors': {
+      id: '/vendors'
+      path: '/vendors'
+      fullPath: '/vendors'
+      preLoaderRoute: typeof VendorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setup': {
+      id: '/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof SetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rfq': {
+      id: '/rfq'
+      path: '/rfq'
+      fullPath: '/rfq'
+      preLoaderRoute: typeof RfqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quotations': {
+      id: '/quotations'
+      path: '/quotations'
+      fullPath: '/quotations'
+      preLoaderRoute: typeof QuotationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/purchase-orders': {
+      id: '/purchase-orders'
+      path: '/purchase-orders'
+      fullPath: '/purchase-orders'
+      preLoaderRoute: typeof PurchaseOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoices': {
+      id: '/invoices'
+      path: '/invoices'
+      fullPath: '/invoices'
+      preLoaderRoute: typeof InvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comparison': {
+      id: '/comparison'
+      path: '/comparison'
+      fullPath: '/comparison'
+      preLoaderRoute: typeof ComparisonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/approvals': {
+      id: '/approvals'
+      path: '/approvals'
+      fullPath: '/approvals'
+      preLoaderRoute: typeof ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/activity': {
+      id: '/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof ActivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +297,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityRoute: ActivityRoute,
+  ApprovalsRoute: ApprovalsRoute,
+  ComparisonRoute: ComparisonRoute,
+  DashboardRoute: DashboardRoute,
+  InvoicesRoute: InvoicesRoute,
+  LoginRoute: LoginRoute,
+  PurchaseOrdersRoute: PurchaseOrdersRoute,
+  QuotationsRoute: QuotationsRoute,
+  ReportsRoute: ReportsRoute,
+  RfqRoute: RfqRoute,
+  SetupRoute: SetupRoute,
+  VendorsRoute: VendorsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

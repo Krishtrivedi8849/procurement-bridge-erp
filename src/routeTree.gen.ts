@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VendorsRouteImport } from './routes/vendors'
+import { Route as SetupRouteImport } from './routes/setup'
 import { Route as RfqRouteImport } from './routes/rfq'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as QuotationsRouteImport } from './routes/quotations'
@@ -25,6 +26,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const VendorsRoute = VendorsRouteImport.update({
   id: '/vendors',
   path: '/vendors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SetupRoute = SetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RfqRoute = RfqRouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/quotations': typeof QuotationsRoute
   '/reports': typeof ReportsRoute
   '/rfq': typeof RfqRoute
+  '/setup': typeof SetupRoute
   '/vendors': typeof VendorsRoute
 }
 export interface FileRoutesByTo {
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/quotations': typeof QuotationsRoute
   '/reports': typeof ReportsRoute
   '/rfq': typeof RfqRoute
+  '/setup': typeof SetupRoute
   '/vendors': typeof VendorsRoute
 }
 export interface FileRoutesById {
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/quotations': typeof QuotationsRoute
   '/reports': typeof ReportsRoute
   '/rfq': typeof RfqRoute
+  '/setup': typeof SetupRoute
   '/vendors': typeof VendorsRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/reports'
     | '/rfq'
+    | '/setup'
     | '/vendors'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/reports'
     | '/rfq'
+    | '/setup'
     | '/vendors'
   id:
     | '__root__'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/reports'
     | '/rfq'
+    | '/setup'
     | '/vendors'
   fileRoutesById: FileRoutesById
 }
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   QuotationsRoute: typeof QuotationsRoute
   ReportsRoute: typeof ReportsRoute
   RfqRoute: typeof RfqRoute
+  SetupRoute: typeof SetupRoute
   VendorsRoute: typeof VendorsRoute
 }
 
@@ -193,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/vendors'
       fullPath: '/vendors'
       preLoaderRoute: typeof VendorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setup': {
+      id: '/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof SetupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rfq': {
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuotationsRoute: QuotationsRoute,
   ReportsRoute: ReportsRoute,
   RfqRoute: RfqRoute,
+  SetupRoute: SetupRoute,
   VendorsRoute: VendorsRoute,
 }
 export const routeTree = rootRouteImport

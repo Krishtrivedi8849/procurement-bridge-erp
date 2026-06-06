@@ -14,6 +14,7 @@ import { Route as RfqRouteImport } from './routes/rfq'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ComparisonRouteImport } from './routes/comparison'
 import { Route as ApprovalsRouteImport } from './routes/approvals'
@@ -44,6 +45,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvoicesRoute = InvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/approvals': typeof ApprovalsRoute
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
+  '/invoices': typeof InvoicesRoute
   '/login': typeof LoginRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quotations': typeof QuotationsRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/approvals': typeof ApprovalsRoute
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
+  '/invoices': typeof InvoicesRoute
   '/login': typeof LoginRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quotations': typeof QuotationsRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/approvals': typeof ApprovalsRoute
   '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
+  '/invoices': typeof InvoicesRoute
   '/login': typeof LoginRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quotations': typeof QuotationsRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/comparison'
     | '/dashboard'
+    | '/invoices'
     | '/login'
     | '/purchase-orders'
     | '/quotations'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/comparison'
     | '/dashboard'
+    | '/invoices'
     | '/login'
     | '/purchase-orders'
     | '/quotations'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/comparison'
     | '/dashboard'
+    | '/invoices'
     | '/login'
     | '/purchase-orders'
     | '/quotations'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   ApprovalsRoute: typeof ApprovalsRoute
   ComparisonRoute: typeof ComparisonRoute
   DashboardRoute: typeof DashboardRoute
+  InvoicesRoute: typeof InvoicesRoute
   LoginRoute: typeof LoginRoute
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QuotationsRoute: typeof QuotationsRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/invoices': {
+      id: '/invoices'
+      path: '/invoices'
+      fullPath: '/invoices'
+      preLoaderRoute: typeof InvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApprovalsRoute: ApprovalsRoute,
   ComparisonRoute: ComparisonRoute,
   DashboardRoute: DashboardRoute,
+  InvoicesRoute: InvoicesRoute,
   LoginRoute: LoginRoute,
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QuotationsRoute: QuotationsRoute,

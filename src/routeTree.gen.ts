@@ -14,6 +14,7 @@ import { Route as RfqRouteImport } from './routes/rfq'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ComparisonRouteImport } from './routes/comparison'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VendorsRoute = VendorsRouteImport.update({
@@ -41,6 +42,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComparisonRoute = ComparisonRouteImport.update({
+  id: '/comparison',
+  path: '/comparison',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,6 +55,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/quotations': typeof QuotationsRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/quotations': typeof QuotationsRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/comparison': typeof ComparisonRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/quotations': typeof QuotationsRoute
@@ -74,12 +83,27 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login' | '/quotations' | '/rfq' | '/vendors'
+  fullPaths:
+    | '/'
+    | '/comparison'
+    | '/dashboard'
+    | '/login'
+    | '/quotations'
+    | '/rfq'
+    | '/vendors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login' | '/quotations' | '/rfq' | '/vendors'
+  to:
+    | '/'
+    | '/comparison'
+    | '/dashboard'
+    | '/login'
+    | '/quotations'
+    | '/rfq'
+    | '/vendors'
   id:
     | '__root__'
     | '/'
+    | '/comparison'
     | '/dashboard'
     | '/login'
     | '/quotations'
@@ -89,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComparisonRoute: typeof ComparisonRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
   QuotationsRoute: typeof QuotationsRoute
@@ -133,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/comparison': {
+      id: '/comparison'
+      path: '/comparison'
+      fullPath: '/comparison'
+      preLoaderRoute: typeof ComparisonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -145,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComparisonRoute: ComparisonRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
   QuotationsRoute: QuotationsRoute,
